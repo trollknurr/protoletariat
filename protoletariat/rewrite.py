@@ -206,6 +206,10 @@ def build_rewrites(
                 + "_pb2" * (not import_parts)
             ),
         ),
+        Replacement(
+            old=f"from {from_} import {part}_pb2 as _{part}_pb2",
+            new=f"from {leading_dots}{from_} import {part}_pb2 as _{part}_pb2",
+        ),
     ]
     if is_public:
         replacements.append(
